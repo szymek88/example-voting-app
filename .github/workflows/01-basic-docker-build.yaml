@@ -1,0 +1,26 @@
+---
+name: 01 Basic Docker Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-image:
+    name: Build Image
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrects.DOCKERHUB_USERNAME }}
+          username: ${{ secrects.DOCKERHUB_TOKEN }}
+
+      - name: Docker build
+        uses: docker/build-push-action@v4
+        with:
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: szymonpapuga/docker-ci-automation:latest,szymonpapuga/docker-ci-automation:01
