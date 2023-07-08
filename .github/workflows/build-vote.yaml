@@ -1,11 +1,16 @@
----
-name: 01 Basic Docker Build
+name: Build Vote
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'vote/**'
+      - '.github/workflows/build-vote.yaml'
   pull_request:
+    paths:
+      - 'vote/**'
+      - '.github/workflows/build-vote.yaml'
 
 jobs:
   build-image:
@@ -23,4 +28,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: szymonpapuga/docker-ci-automation:latest,szymonpapuga/docker-ci-automation:01
+          tags: szymonpapuga/example-voting-app-vote:latest,szymonpapuga/example-voting-app-vote:01
+          context: vote
