@@ -32,4 +32,6 @@ jobs:
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: szymonpapuga/example-voting-app-worker:latest,szymonpapuga/example-voting-app-worker:01
-          context: worker
+          context: "{{defaultContext}}:worker"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
