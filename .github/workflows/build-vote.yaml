@@ -30,7 +30,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: szymonpapuga/example-voting-app
+          images: szymonpapuga/example-voting-app-vote
           flavor: |
             latest=false
           tags: |
