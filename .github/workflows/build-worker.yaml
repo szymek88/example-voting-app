@@ -54,7 +54,7 @@ jobs:
       - name: Run Trivy for all CVEs (non-blocking)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/szymonpapuga/example-voting-app-worker:${{ github.sha }}'
+          image-ref: 'szymonpapuga/example-voting-app-worker:${{ github.sha }}'
           exit-code: 0
           format: table
       - name: Find comment for image tags
